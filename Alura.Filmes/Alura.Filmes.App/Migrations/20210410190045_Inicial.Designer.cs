@@ -11,7 +11,7 @@ using System;
 namespace Alura.Filmes.App.Migrations
 {
     [DbContext(typeof(AluraFilmesContexto))]
-    [Migration("20210410183420_Inicial")]
+    [Migration("20210410190045_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace Alura.Filmes.App.Negocio
 {
-    [Table("actor")] // Mapeando a Tabela do banco de dados para classe 
+    //[Table("actor")] // Mapeando a Tabela do banco de dados para classe 
     public class Ator
     {
-        [Column("actor_id")] // Mapeando a Coluna do banco pra propiedade da classe
+        //[Column("actor_id")] // Mapeando a Coluna do banco pra propiedade da classe
         public int Id { get; set; }
 
-        [Required] // Anotação Para nao Permitir Nulo
-        [Column("first_name",TypeName ="varchar(45)")] // Mapeando a Coluna do banco pra propiedade da classe
+        //[Required] // Anotação Para nao Permitir Nulo
+       // [Column("first_name",TypeName ="varchar(45)")] // Mapeando a Coluna do banco pra propiedade da classe
         public string PrimeiroNome { get; set; }
 
-        [Required] // Anotação Para nao Permitir Nulo
-        [Column("last_name", TypeName = "varchar(45)")] // Mapeando a Coluna do banco pra propiedade da classe
+        //[Required] // Anotação Para nao Permitir Nulo
+        //[Column("last_name", TypeName = "varchar(45)")] // Mapeando a Coluna do banco pra propiedade da classe
         public string UltimoNome { get; set; }
 
         public override string ToString()
