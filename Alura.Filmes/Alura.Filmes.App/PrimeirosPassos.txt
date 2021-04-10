@@ -1,0 +1,11 @@
+﻿Verificando Libs instalada pelo entityframework
+Get-Help entityframework
+
+Remover uma Migration
+Remove-Migration
+
+Gerando Um Script de sql
+Script-Migration
+
+Criando uma Migração
+Add-Migration Inicial

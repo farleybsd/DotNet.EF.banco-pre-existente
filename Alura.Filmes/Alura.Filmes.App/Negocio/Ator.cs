@@ -12,9 +12,10 @@ namespace Alura.Filmes.App.Negocio
     {
         [Column("actor_id")] // Mapeando a Coluna do banco pra propiedade da classe
         public int Id { get; set; }
-        [Column("first_name")] // Mapeando a Coluna do banco pra propiedade da classe
+        [Column("first_name",TypeName ="varchar(45)")] // Mapeando a Coluna do banco pra propiedade da classe
         public string PrimeiroNome { get; set; }
-        [Column("last_name")] // Mapeando a Coluna do banco pra propiedade da classe
+
+        [Column("last_name", TypeName = "varchar(45)")] // Mapeando a Coluna do banco pra propiedade da classe
         public string UltimoNome { get; set; }
 
         public override string ToString()
