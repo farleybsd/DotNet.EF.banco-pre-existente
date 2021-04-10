@@ -16,7 +16,7 @@ namespace Alura.Filmes.App
 
                 foreach (var ator in contexto.Atores)
                 {
-                    Console.WriteLine(ator.PrimeiroNome);
+                    Console.WriteLine(ator);
                 }
             }
 
