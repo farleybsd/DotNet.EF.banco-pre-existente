@@ -38,6 +38,11 @@ namespace Alura.Filmes.App.Dados
                        .HasColumnName("last_name") // Nome da Coluna no Banco De Dados
                        .HasColumnType("varchar(45)") // Tipo Da Coluna No Banco De Dados
                        .IsRequired(); // Nao Aceita Valor Null
+
+            modelBuilder.Entity<Ator>()
+                        .Property<DateTime>("last_update")
+                        .HasColumnType("datetime")
+                        .IsRequired(); //mapeando uma coluna no banco que não  e importante para o negocio
         }
     }
 }
