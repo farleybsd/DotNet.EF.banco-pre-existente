@@ -9,3 +9,6 @@ Script-Migration
 
 Criando uma Migração
 Add-Migration Inicial
+
+Rodar uma migracao
+Update-DataBase
