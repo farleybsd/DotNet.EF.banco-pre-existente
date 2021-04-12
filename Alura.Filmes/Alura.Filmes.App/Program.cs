@@ -44,10 +44,21 @@ namespace Alura.Filmes.App
 
         private static void ListandoIndiomas(AluraFilmesContexto contexto)
         {
-            foreach (var idioma in contexto.Indiomas)
+            var idiomas = contexto.Indiomas
+                                   .Include(i => i.FilmesFalados);
+
+
+            foreach (var idioma in idiomas)
             {
                 Console.WriteLine(idioma);
+
+                foreach (var filme in idioma.FilmesFalados)
+                {
+                    Console.WriteLine(filme);
+                }
+                Console.WriteLine("\n");
             }
+            
         }
 
         private static void AtoresQueAturamDeterminadosFilmesUsandoChaveComposta(AluraFilmesContexto contexto)
