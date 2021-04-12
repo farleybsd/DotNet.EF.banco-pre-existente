@@ -15,7 +15,7 @@ namespace Alura.Filmes.App
 
             using (var contexto = new AluraFilmesContexto())
             {
-                //contexto.LogSQLToConsole();
+                contexto.LogSQLToConsole();
 
                 // Select ta tabela Atores
                 //SelecionarTodosAtores(contexto);
@@ -27,10 +27,21 @@ namespace Alura.Filmes.App
                 //SelecionandoUmAtor(contexto);
 
                 // Selecionando Filmes 
-                SelecionandoFilmes(contexto);
+                //SelecionandoFilmes(contexto);
+
+                // Selecionar Elenco
+                elecionaElenco(contexto);
             }
 
             Console.ReadKey();
+        }
+
+        private static void elecionaElenco(AluraFilmesContexto contexto)
+        {
+            foreach (var elenco in contexto.Elenco)
+            {
+                Console.WriteLine(elenco);
+            }
         }
 
         private static void SelecionandoFilmes(AluraFilmesContexto contexto)
