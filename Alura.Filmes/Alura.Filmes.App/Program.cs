@@ -30,7 +30,21 @@ namespace Alura.Filmes.App
                 //SelecionandoFilmes(contexto);
 
                 // Selecionar Elenco
-                elecionaElenco(contexto);
+                //elecionaElenco(contexto);
+
+                //AtoresQueAturamDeterminadosFilmes
+
+                var filme = contexto
+                                    .Filmes
+                                    .Include(f => f.Atores)
+                                    .First();
+                Console.WriteLine(filme);
+                Console.WriteLine("Elenco:");
+
+                foreach (var ator in filme.Atores)
+                {
+                    Console.WriteLine(ator);
+                }
             }
 
             Console.ReadKey();
