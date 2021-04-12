@@ -32,23 +32,33 @@ namespace Alura.Filmes.App
                 // Selecionar Elenco
                 //elecionaElenco(contexto);
 
-                //AtoresQueAturamDeterminadosFilmes
+                //AtoresQueAturamDeterminadosFilmesUsandoChaveComposta
+                //AtoresQueAturamDeterminadosFilmesUsandoChaveComposta(contexto);
 
-                var filme = contexto
-                                    .Filmes
-                                    .Include(f => f.Atores)
-                                    .ThenInclude(fa => fa.Ator) //Especifica dados adicionais relacionados a serem incluídos com base em um tipo relacionado que acabou de ser incluído.
-                                    .First();
-                Console.WriteLine(filme);
-                Console.WriteLine("Elenco:");
-
-                foreach (var ator in filme.Atores)
+                //Listando Indiomas
+                foreach (var idioma in contexto.Indiomas)
                 {
-                    Console.WriteLine(ator.Ator);
+                    Console.WriteLine(idioma);
                 }
             }
 
             Console.ReadKey();
+        }
+
+        private static void AtoresQueAturamDeterminadosFilmesUsandoChaveComposta(AluraFilmesContexto contexto)
+        {
+            var filme = contexto
+                                .Filmes
+                                .Include(f => f.Atores)
+                                .ThenInclude(fa => fa.Ator) //Especifica dados adicionais relacionados a serem incluídos com base em um tipo relacionado que acabou de ser incluído.
+                                .First();
+            Console.WriteLine(filme);
+            Console.WriteLine("Elenco:");
+
+            foreach (var ator in filme.Atores)
+            {
+                Console.WriteLine(ator.Ator);
+            }
         }
 
         private static void elecionaElenco(AluraFilmesContexto contexto)
