@@ -6,7 +6,7 @@
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public string AnoLancamento { get; set; }
-        public int Duracao { get; set; }
+        public short Duracao { get; set; }
 
     }
 }
