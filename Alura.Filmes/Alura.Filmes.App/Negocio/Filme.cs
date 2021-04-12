@@ -8,5 +8,10 @@
         public string AnoLancamento { get; set; }
         public short Duracao { get; set; }
 
+        public override string ToString()
+        {
+            return $" Filme ({Id}) : Titulo : {Titulo}  Ano Lancamento : {AnoLancamento}  ";
+        }
+
     }
 }
