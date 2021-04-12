@@ -19,13 +19,26 @@ namespace Alura.Filmes.App
 
                 // Select ta tabela Atores
                 //SelecionarTodosAtores(contexto);
+
                 // Insert  Shadow Protetys
-                InsertShadowProterys(contexto);
+                //InsertShadowProterys(contexto);
+
                 //Selecionando Um Ator
-                SelecionandoUmAtor(contexto);
+                //SelecionandoUmAtor(contexto);
+
+                // Selecionando Filmes 
+                SelecionandoFilmes(contexto);
             }
 
             Console.ReadKey();
+        }
+
+        private static void SelecionandoFilmes(AluraFilmesContexto contexto)
+        {
+            foreach (var filme in contexto.Filmes)
+            {
+                Console.WriteLine(filme);
+            }
         }
 
         private static void SelecionandoUmAtor(AluraFilmesContexto contexto)
