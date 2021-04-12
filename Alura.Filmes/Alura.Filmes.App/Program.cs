@@ -40,7 +40,12 @@ namespace Alura.Filmes.App
         {
             foreach (var elenco in contexto.Elenco)
             {
-                Console.WriteLine(elenco);
+                //Shadow Protetys
+                var entidade = contexto.Entry(elenco);
+                var filmId = entidade.Property("film_id").CurrentValue;
+                var actorId = entidade.Property("actor_id").CurrentValue;
+                var last_Update = entidade.Property("last_update").CurrentValue;
+                Console.WriteLine($"Filme {filmId} - Ator {actorId} - Last_Update {last_Update} ");
             }
         }
 

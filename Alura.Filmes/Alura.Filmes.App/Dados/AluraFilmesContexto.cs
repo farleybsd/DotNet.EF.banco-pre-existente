@@ -27,6 +27,9 @@ namespace Alura.Filmes.App.Dados
 
             // Configurando Filmes
             modelBuilder.ApplyConfiguration(new FilmeConfiguration());
+
+            // Configurando FilmesAtor Chave Composta
+            modelBuilder.ApplyConfiguration(new FilmeAtorConfiguration());
         }
     }
 }
