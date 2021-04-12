@@ -10,7 +10,8 @@ namespace Alura.Filmes.App.Negocio
         public string AnoLancamento { get; set; }
         public short Duracao { get; set; }
         public IList<FilmeAtor> Atores { get; set; } // Filme pode ter varios Atores
-
+        public Indioma IdiomaFalado { get; set; }
+        public Indioma IdiomaOriginal { get; set; }
         public Filme()
         {
             Atores = new List<FilmeAtor>();

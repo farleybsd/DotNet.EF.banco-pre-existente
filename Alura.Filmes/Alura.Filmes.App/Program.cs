@@ -36,13 +36,18 @@ namespace Alura.Filmes.App
                 //AtoresQueAturamDeterminadosFilmesUsandoChaveComposta(contexto);
 
                 //Listando Indiomas
-                foreach (var idioma in contexto.Indiomas)
-                {
-                    Console.WriteLine(idioma);
-                }
+                ListandoIndiomas(contexto);
             }
 
             Console.ReadKey();
+        }
+
+        private static void ListandoIndiomas(AluraFilmesContexto contexto)
+        {
+            foreach (var idioma in contexto.Indiomas)
+            {
+                Console.WriteLine(idioma);
+            }
         }
 
         private static void AtoresQueAturamDeterminadosFilmesUsandoChaveComposta(AluraFilmesContexto contexto)

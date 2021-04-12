@@ -43,6 +43,23 @@ namespace Alura.Filmes.App.Dados
                         .HasDefaultValueSql("getdate()") //Adicionando Valor Default Shadow Protetys no BD
                         .IsRequired(); //mapeando uma coluna no banco que não  e importante para o negocio
 
+            // Relacionamento com Idioma
+
+            builder
+                      .Property<byte>("language_id"); //FK
+            builder
+                      .Property<byte>("original_language_id"); //FK
+
+            builder
+                    .HasOne(f => f.IdiomaFalado)
+                    .WithMany(i => i.FilmesFalados)
+                    .HasForeignKey("language_id");
+
+            builder
+                   .HasOne(f => f.IdiomaOriginal)
+                   .WithMany(i => i.FilmesOriginais)
+                   .HasForeignKey("original_language_id");
+
         }
     }
 }
