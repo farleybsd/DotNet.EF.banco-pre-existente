@@ -14,7 +14,7 @@ namespace Alura.Filmes.App.Dados
         public DbSet<Ator> Atores {get;set;} // DbSet tem que ser nome da tabela no banco de dados convecao
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AluraFilmes;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AluraFilmesTST;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         }
 
@@ -42,6 +42,7 @@ namespace Alura.Filmes.App.Dados
             modelBuilder.Entity<Ator>()
                         .Property<DateTime>("last_update")
                         .HasColumnType("datetime")
+                        .HasDefaultValueSql("getdate()") //Adicionando Valor Default Shadow Protetys no BD
                         .IsRequired(); //mapeando uma coluna no banco que não  e importante para o negocio
         }
     }

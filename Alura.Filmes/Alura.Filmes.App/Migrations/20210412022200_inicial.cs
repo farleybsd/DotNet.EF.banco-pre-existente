@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Alura.Filmes.App.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,7 @@ namespace Alura.Filmes.App.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     first_name = table.Column<string>(type: "varchar(45)", nullable: false),
                     last_name = table.Column<string>(type: "varchar(45)", nullable: false),
-                    last_update = table.Column<DateTime>(type: "datetime", nullable: false)
+                    last_update = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {

@@ -9,30 +9,41 @@ namespace Alura.Filmes.App
     {
         static void Main(string[] args)
         {
-            // Select ta tabela Atores
+            
 
             using (var contexto = new AluraFilmesContexto())
             {
                 //contexto.LogSQLToConsole();
 
-                //foreach (var ator in contexto.Atores)
-                //{
-                //    Console.WriteLine(ator);
-                //}
-
+                // Select ta tabela Atores
+                SelecionarTodosAtores(contexto);
                 // Insert  Shadow Protetys
-                var ator = new Ator();
-                ator.PrimeiroNome = "Farley";
-                ator.UltimoNome = "Rufino";
-                //Shadow Protetys
-                contexto.Entry(ator).Property("last_update").CurrentValue = DateTime.Now;// Colocando um valor obrigario para o banco 
-                                                                                        //  mais que nao e importante para o negocio
+                InsertShadowProterys(contexto);
 
-                contexto.Atores.Add(ator);
-                contexto.SaveChanges();
             }
 
             Console.ReadKey();
+        }
+
+        private static void SelecionarTodosAtores(AluraFilmesContexto contexto)
+        {
+            foreach (var ator in contexto.Atores)
+            {
+                Console.WriteLine(ator);
+            }
+        }
+
+        private static void InsertShadowProterys(AluraFilmesContexto contexto)
+        {
+            var ator = new Ator();
+            ator.PrimeiroNome = "Farley";
+            ator.UltimoNome = "Rufino";
+            //Shadow Protetys
+            //contexto.Entry(ator).Property("last_update").CurrentValue = DateTime.Now;// Colocando um valor obrigario para o banco 
+                                                                                     //  mais que nao e importante para o negocio
+
+            contexto.Atores.Add(ator);
+            contexto.SaveChanges();
         }
     }
 }
