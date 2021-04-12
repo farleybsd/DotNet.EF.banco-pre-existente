@@ -22,65 +22,10 @@ namespace Alura.Filmes.App.Dados
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Configurando Ator
-            modelBuilder.Entity<Ator>()
-                        .ToTable("actor");
-
-            modelBuilder.Entity<Ator>()
-                        .Property(a => a.Id) // Nome Na Classe Ator
-                        .HasColumnName("actor_id"); // Nome da Coluna no Banco De Dados
-
-            modelBuilder.Entity<Ator>()
-                        .Property(a => a.PrimeiroNome) // Nome Na Classe Ator
-                        .HasColumnName("first_name") // Nome da Coluna no Banco De Dados
-                        .HasColumnType("varchar(45)") // Tipo Da Coluna No Banco De Dados
-                        .IsRequired(); // Nao Aceita Valor Null
-
-            modelBuilder.Entity<Ator>()
-                       .Property(a => a.UltimoNome) // Nome Na Classe Ator
-                       .HasColumnName("last_name") // Nome da Coluna no Banco De Dados
-                       .HasColumnType("varchar(45)") // Tipo Da Coluna No Banco De Dados
-                       .IsRequired(); // Nao Aceita Valor Null
-
-            modelBuilder.Entity<Ator>()
-                        .Property<DateTime>("last_update")
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("getdate()") //Adicionando Valor Default Shadow Protetys no BD
-                        .IsRequired(); //mapeando uma coluna no banco que não  e importante para o negocio
+            modelBuilder.ApplyConfiguration(new AtorConfiguration());
 
             // Configurando Filmes
-            modelBuilder.Entity<Filme>()
-                      .ToTable("film");
-
-            modelBuilder.Entity<Filme>() // Nome da Classe Filme
-                       .Property(f => f.Id) // Nome Na Classe Filme
-                       .HasColumnName("film_id"); // Nome da Coluna no Banco De Dadosna no banco que não  e importante para o negocio
-            
-            modelBuilder.Entity<Filme>()
-                       .Property(f => f.Titulo) // Nome Na Classe Filme
-                       .HasColumnName("title") // Nome da Coluna no Banco De Dados
-                       .HasColumnType("varchar(255)") // Tipo Da Coluna No Banco De Dados
-                       .IsRequired(); // Nao Aceita Valor Null
-
-            modelBuilder.Entity<Filme>()
-                      .Property(f => f.Descricao) // Nome Na Classe Filme
-                      .HasColumnName("description") // Nome da Coluna no Banco De Dados
-                      .HasColumnType("text"); // Tipo Da Coluna No Banco De Dados
-
-            modelBuilder.Entity<Filme>()
-                      .Property(f => f.AnoLancamento) // Nome Na Classe Filme
-                      .HasColumnName("release_year") // Nome da Coluna no Banco De Dados
-                      .HasColumnType("varchar(4)"); // Tipo Da Coluna No Banco De Dados
-
-            modelBuilder.Entity<Filme>()
-                      .Property(f => f.Duracao) // Nome Na Classe Filme
-                      .HasColumnName("length"); // Nome da Coluna no Banco De Dados
-
-            modelBuilder.Entity<Filme>()
-                        .Property<DateTime>("last_update")
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("getdate()") //Adicionando Valor Default Shadow Protetys no BD
-                        .IsRequired(); //mapeando uma coluna no banco que não  e importante para o negocio
-
+            modelBuilder.ApplyConfiguration(new FilmeConfiguration());
         }
     }
 }
