@@ -22,6 +22,13 @@ namespace Alura.Filmes.App.Negocio
         //[Column("last_name", TypeName = "varchar(45)")] // Mapeando a Coluna do banco pra propiedade da classe
         public string UltimoNome { get; set; }
 
+        public IList<FilmeAtor> Filmografia { get; set; }
+
+        public Ator()
+        {
+            Filmografia = new List<FilmeAtor>();
+        }
+
         public override string ToString()
         {
             return $" Ator ({Id}) : Nome : {PrimeiroNome} Ultimo Nome : {UltimoNome}  ";

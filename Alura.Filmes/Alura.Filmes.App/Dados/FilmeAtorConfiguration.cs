@@ -28,6 +28,19 @@ namespace Alura.Filmes.App.Dados
 
             builder
                    .HasKey("film_id", "actor_id");
+
+            // Mapeando ForenKey
+            builder
+                .HasOne(fa => fa.Filme) // Relacionamento de ida
+                .WithMany(f => f.Atores) // Relacionamento de volta
+                .HasForeignKey("film_id");
+
+            // Ator
+            builder
+               .HasOne(fa => fa.Ator) // Relacionamento de ida 1.0
+               .WithMany(a => a.Filmografia) // Relacionamento de volta
+               .HasForeignKey("actor_id");
+
         }
     }
 }

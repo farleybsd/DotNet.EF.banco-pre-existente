@@ -9,7 +9,7 @@ namespace Alura.Filmes.App.Negocio
         public string Descricao { get; set; }
         public string AnoLancamento { get; set; }
         public short Duracao { get; set; }
-        public IList<FilmeAtor> Atores { get; set; }
+        public IList<FilmeAtor> Atores { get; set; } // Filme pode ter varios Atores
 
         public Filme()
         {

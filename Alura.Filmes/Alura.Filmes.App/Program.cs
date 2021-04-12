@@ -37,13 +37,14 @@ namespace Alura.Filmes.App
                 var filme = contexto
                                     .Filmes
                                     .Include(f => f.Atores)
+                                    .ThenInclude(fa => fa.Ator) //Especifica dados adicionais relacionados a serem incluídos com base em um tipo relacionado que acabou de ser incluído.
                                     .First();
                 Console.WriteLine(filme);
                 Console.WriteLine("Elenco:");
 
                 foreach (var ator in filme.Atores)
                 {
-                    Console.WriteLine(ator);
+                    Console.WriteLine(ator.Ator);
                 }
             }
 
