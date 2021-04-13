@@ -20,19 +20,13 @@ namespace Alura.Filmes.App
 
 
                 // resitricacaoCheckClassificacao
-                var indioma = new Idioma()
-                {
-                    Nome = "English",
-
-                };
-                
 
                 var filmes = new Filme();
                 filmes.Titulo = "Senhor Dos Aneis";
                 filmes.Duracao = 120;
                 filmes.AnoLancamento = "2000";
                 filmes.Classificacao = "Merda";
-                filmes.IdiomaFalado = indioma;
+                filmes.IdiomaFalado = contexto.Idiomas.First();
                 contexto.Entry(filmes).Property("last_update").CurrentValue = DateTime.Now;
 
                 contexto.Filmes.Add(filmes);
