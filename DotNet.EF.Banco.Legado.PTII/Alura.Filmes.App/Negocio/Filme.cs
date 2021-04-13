@@ -13,6 +13,7 @@ namespace Alura.Filmes.App.Negocio
         public IList<FilmeAtor> Atores { get; set; }
         public Idioma IdiomaFalado { get; set; }
         public Idioma IdiomaOriginal { get; set; }
+        public string Classificacao { get; set; }
 
         public Filme()
         {
