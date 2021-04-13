@@ -58,6 +58,14 @@ namespace Alura.Filmes.App.Dados
                 .Property(f => f.Classificacao)
                 .HasColumnName("rating")
                 .HasColumnType("varchar(10)");
+
+            builder
+               .Property(f => f.TextoClassificacao)
+               .HasColumnName("rating")
+               .HasColumnType("varchar(10)");
+
+            builder
+                .Ignore(f => f.Classificacao); // nao fazer o mapeamento de uma classe
         }
     }
 }

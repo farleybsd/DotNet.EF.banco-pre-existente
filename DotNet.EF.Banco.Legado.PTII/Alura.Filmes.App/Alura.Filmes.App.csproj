@@ -162,6 +162,10 @@
     <Compile Include="Migrations\20210413184924_FilmeCheckConstraint.designer.cs">
       <DependentUpon>20210413184924_FilmeCheckConstraint.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210413215539_Enumerdado.cs" />
+    <Compile Include="Migrations\20210413215539_Enumerdado.designer.cs">
+      <DependentUpon>20210413215539_Enumerdado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AluraFilmesContextoModelSnapshot.cs" />
     <Compile Include="Negocio\Ator.cs" />
     <Compile Include="Negocio\Enum\ClassificacaoIndicativa.cs" />

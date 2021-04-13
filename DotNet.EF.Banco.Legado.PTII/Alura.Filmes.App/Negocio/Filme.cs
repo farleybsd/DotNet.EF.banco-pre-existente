@@ -1,4 +1,5 @@
-﻿using Alura.Filmes.App.Negocio.Enum;
+﻿using Alura.Filmes.App.Extensions;
+using Alura.Filmes.App.Negocio.Enum;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,7 +15,12 @@ namespace Alura.Filmes.App.Negocio
         public IList<FilmeAtor> Atores { get; set; }
         public Idioma IdiomaFalado { get; set; }
         public Idioma IdiomaOriginal { get; set; }
-        public ClassificacaoIndicativa Classificacao { get; set; }
+        public ClassificacaoIndicativa Classificacao // Mundo OO
+        {
+            get { return TextoClassificacao.ParaValor(); }
+            set { TextoClassificacao = value.ParaString(); } // Mapeada para O DB
+        }
+        public string TextoClassificacao { get; private set; }
 
         public Filme()
         {

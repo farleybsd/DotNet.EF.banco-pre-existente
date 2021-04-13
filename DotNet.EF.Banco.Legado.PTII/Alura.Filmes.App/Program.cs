@@ -24,7 +24,21 @@ namespace Alura.Filmes.App
                 //resitricacaoCheckClassificacao(contexto);
 
                 //ConvertEnumParaTabelaEextensao
-                ConvertEnumParaTabelaEextensao();
+                //ConvertEnumParaTabelaEextensao();
+
+                var filmes = new Filme();
+                filmes.Titulo = "Cassino Royale";
+                filmes.Duracao = 120;
+                filmes.AnoLancamento = "2000";
+                filmes.Classificacao = ClassificacaoIndicativa.MaioresQue14;
+                filmes.IdiomaFalado = contexto.Idiomas.First();
+                contexto.Entry(filmes).Property("last_update").CurrentValue = DateTime.Now;
+
+                contexto.Filmes.Add(filmes);
+                contexto.SaveChanges();
+
+                var filmeInserido = contexto.Filmes.First(f => f.Titulo == filmes.Titulo);
+                Console.WriteLine(filmeInserido.Classificacao.ParaString());
 
                 Console.ReadKey();
 
