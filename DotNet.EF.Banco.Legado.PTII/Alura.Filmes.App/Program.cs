@@ -21,21 +21,35 @@ namespace Alura.Filmes.App
 
 
                 // resitricacaoCheckClassificacao
+                //resitricacaoCheckClassificacao(contexto);
 
-                var filmes = new Filme();
-                filmes.Titulo = "Senhor Dos Aneis";
-                filmes.Duracao = 120;
-                filmes.AnoLancamento = "2000";
-                filmes.Classificacao = ClassificacaoIndicativa.Livre;
-                filmes.IdiomaFalado = contexto.Idiomas.First();
-                contexto.Entry(filmes).Property("last_update").CurrentValue = DateTime.Now;
-
-                contexto.Filmes.Add(filmes);
-                contexto.SaveChanges();
+                //ConvertEnumParaTabelaEextensao
+                ConvertEnumParaTabelaEextensao();
 
                 Console.ReadKey();
 
             }
+        }
+
+        private static void ConvertEnumParaTabelaEextensao()
+        {
+            var livre = ClassificacaoIndicativa.MaioresQue18;
+            Console.WriteLine(livre.ParaString());
+            Console.WriteLine("G".ParaValor());
+        }
+
+        private static void resitricacaoCheckClassificacao(AluraFilmesContexto contexto)
+        {
+            var filmes = new Filme();
+            filmes.Titulo = "Senhor Dos Aneis";
+            filmes.Duracao = 120;
+            filmes.AnoLancamento = "2000";
+            filmes.Classificacao = ClassificacaoIndicativa.Livre;
+            filmes.IdiomaFalado = contexto.Idiomas.First();
+            contexto.Entry(filmes).Property("last_update").CurrentValue = DateTime.Now;
+
+            contexto.Filmes.Add(filmes);
+            contexto.SaveChanges();
         }
 
         private static void GerandoConstraintEFParaBancoDados(AluraFilmesContexto contexto)
