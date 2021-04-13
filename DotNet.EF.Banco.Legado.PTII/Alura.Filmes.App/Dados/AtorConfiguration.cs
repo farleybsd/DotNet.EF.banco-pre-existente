@@ -34,17 +34,14 @@ namespace Alura.Filmes.App.Dados
                 .HasDefaultValueSql("getdate()")
                 .IsRequired();
 
+            //Configurando Indices
             builder
                 .HasIndex(a => a.UltimoNome)
                 .HasName("idx_actor_last_name");
 
+            //Configurando Constrantes do BD
             builder
-                .HasAlternateKey(a => new { a.PrimeiroNome, a.UltimoNome });
-
-            //Configure Indices
-            builder
-                .HasIndex(a => a.UltimoNome)
-                .HasName("idx_actor_last_name");
+                .HasAlternateKey(a => new { a.PrimeiroNome, a.UltimoNome });    
         }
     }
 }
