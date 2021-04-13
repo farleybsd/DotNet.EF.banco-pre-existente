@@ -1,6 +1,7 @@
 ﻿using Alura.Filmes.App.Dados;
 using Alura.Filmes.App.Extensions;
 using Alura.Filmes.App.Negocio;
+using Alura.Filmes.App.Negocio.Enum;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Alura.Filmes.App
                 filmes.Titulo = "Senhor Dos Aneis";
                 filmes.Duracao = 120;
                 filmes.AnoLancamento = "2000";
-                filmes.Classificacao = "Merda";
+                filmes.Classificacao = ClassificacaoIndicativa.Livre;
                 filmes.IdiomaFalado = contexto.Idiomas.First();
                 contexto.Entry(filmes).Property("last_update").CurrentValue = DateTime.Now;
 

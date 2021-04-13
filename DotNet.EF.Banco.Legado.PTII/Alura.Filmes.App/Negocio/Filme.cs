@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Alura.Filmes.App.Negocio.Enum;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Alura.Filmes.App.Negocio
@@ -13,7 +14,7 @@ namespace Alura.Filmes.App.Negocio
         public IList<FilmeAtor> Atores { get; set; }
         public Idioma IdiomaFalado { get; set; }
         public Idioma IdiomaOriginal { get; set; }
-        public string Classificacao { get; set; }
+        public ClassificacaoIndicativa Classificacao { get; set; }
 
         public Filme()
         {

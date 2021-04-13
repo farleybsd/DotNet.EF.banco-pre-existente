@@ -161,8 +161,13 @@
     <Compile Include="Migrations\20210413184924_FilmeCheckConstraint.designer.cs">
       <DependentUpon>20210413184924_FilmeCheckConstraint.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210413191844_Enumerado.cs" />
+    <Compile Include="Migrations\20210413191844_Enumerado.designer.cs">
+      <DependentUpon>20210413191844_Enumerado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AluraFilmesContextoModelSnapshot.cs" />
     <Compile Include="Negocio\Ator.cs" />
+    <Compile Include="Negocio\Enum\ClassificacaoIndicativa.cs" />
     <Compile Include="Negocio\Filme.cs" />
     <Compile Include="Negocio\FilmeAtor.cs" />
     <Compile Include="Negocio\Idioma.cs" />
@@ -177,6 +182,7 @@
     <Content Include="Scripts\alurafilmes-cargainicial.sql" />
     <Content Include="Scripts\alurafilmes-estrutura.sql" />
     <Content Include="Criando Uma Contraint.txt" />
+    <Content Include="MapeandoEnum.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
