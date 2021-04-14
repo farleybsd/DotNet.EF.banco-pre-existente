@@ -29,20 +29,56 @@ namespace Alura.Filmes.App
                 //InserindoListandoFilme
                 //InserindoListandoFilme(contexto);
 
-                Console.WriteLine("Clientes");
-                foreach (var cliente in contexto.Clientes)
-                {
-                    Console.WriteLine(cliente);
-                }
+                //ListandoClientesEFuncionarios
+                //ListandoClientesEFuncionarios(contexto);
 
-                Console.WriteLine("Funcionarios");
-                foreach (var funcionario in contexto.Funcionarios)
+                //UsandoSqlRawEF
+
+                //var atoresMaisAtuantes = contexto
+                //                                .Atores
+                //                                .Include(a => a.Filmografia)
+                //                                .OrderByDescending(a => a.Filmografia.Count)
+                //                                .Take(5);
+
+
+                
+                var sql = @"SELECT TOP 5
+                                    A.first_name,
+                                    A.last_name,
+                                    COUNT(*) AS TOTAL
+                            FROM actor A
+	                                INNER JOIN film_actor FA ON FA.actor_id = A.actor_id
+                            GROUP BY 
+                                    A.first_name,
+                                    A.last_name
+                            ORDER BY 
+                                    TOTAL
+                            ";
+
+                var  atoresMaisAtuantes = contexto.Atores.FromSql(sql);
+
+                foreach (var ator in atoresMaisAtuantes)
                 {
-                    Console.WriteLine(funcionario);
+                    Console.WriteLine($"O Ator {ator.PrimeiroNome +"-"+ator.UltimoNome } atuou em:{ator.Filmografia.Count} filmes. ");
                 }
 
                 Console.ReadKey();
 
+            }
+        }
+
+        private static void ListandoClientesEFuncionarios(AluraFilmesContexto contexto)
+        {
+            Console.WriteLine("Clientes");
+            foreach (var cliente in contexto.Clientes)
+            {
+                Console.WriteLine(cliente);
+            }
+
+            Console.WriteLine("Funcionarios");
+            foreach (var funcionario in contexto.Funcionarios)
+            {
+                Console.WriteLine(funcionario);
             }
         }
 
