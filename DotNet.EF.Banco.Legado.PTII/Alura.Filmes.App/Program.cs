@@ -4,6 +4,7 @@ using Alura.Filmes.App.Negocio;
 using Alura.Filmes.App.Negocio.Enum;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Alura.Filmes.App
@@ -41,25 +42,49 @@ namespace Alura.Filmes.App
                 //                                .Take(5);
 
 
+                //SelectUsandoRawSql
+                //SelectUsandoRawSql(contexto);
+
+                //ExeculteProcedureEF
+
+                var categ = "Action";
+
+                var paramCateg = new SqlParameter("category_name",categ);
+                var paramTotal = new SqlParameter
+                { 
+                    ParameterName = "@total_actors",
+                    Size=4,
+                    Direction = System.Data.ParameterDirection.Output
+                };
                 
-                var sql = @"SELECT
+
+                contexto
+                    .Database
+                    .ExecuteSqlCommand("total_actors_from_given_category @category_name , @total_actors OUT", paramCateg,paramTotal);
+
+                Console.WriteLine($"O Total de atores na categoria {categ} é de {paramTotal.Value}.");
+
+                Console.ReadKey();
+
+            }
+        }
+
+        private static void SelectUsandoRawSql(AluraFilmesContexto contexto)
+        {
+            var sql = @"SELECT
                                     a.*
                             FROM actor a
 	                            inner join top5_most_starred_actors filmes on filmes.actor_id = a.actor_id
                             ";
 
-                var atoresMaisAtuantes = contexto
-                                                .Atores
-                                                .FromSql(sql)
-                                                .Include(a => a.Filmografia);
+            var atoresMaisAtuantes = contexto
+                                            .Atores
+                                            .FromSql(sql)
+                                            .Include(a => a.Filmografia);
 
-                foreach (var ator in atoresMaisAtuantes)
-                {
-                    Console.WriteLine($"O Ator {ator.PrimeiroNome +"-"+ator.UltimoNome } atuou em:{ator.Filmografia.Count} filmes. ");
-                }
-
-                Console.ReadKey();
-
+            foreach (var ator in atoresMaisAtuantes)
+            {
+                Console.WriteLine($"O Ator {ator.PrimeiroNome + "-" + ator.UltimoNome } atuou em:{ator.Filmografia.Count} filmes. ");
             }
         }
 
