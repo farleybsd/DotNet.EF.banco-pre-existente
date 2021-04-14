@@ -26,23 +26,41 @@ namespace Alura.Filmes.App
                 //ConvertEnumParaTabelaEextensao
                 //ConvertEnumParaTabelaEextensao();
 
-                var filmes = new Filme();
-                filmes.Titulo = "Cassino Royale";
-                filmes.Duracao = 120;
-                filmes.AnoLancamento = "2000";
-                filmes.Classificacao = ClassificacaoIndicativa.MaioresQue14;
-                filmes.IdiomaFalado = contexto.Idiomas.First();
-                contexto.Entry(filmes).Property("last_update").CurrentValue = DateTime.Now;
+                //InserindoListandoFilme
+                //InserindoListandoFilme(contexto);
 
-                contexto.Filmes.Add(filmes);
-                contexto.SaveChanges();
+                Console.WriteLine("Clientes");
+                foreach (var cliente in contexto.Clientes)
+                {
+                    Console.WriteLine(cliente);
+                }
 
-                var filmeInserido = contexto.Filmes.First(f => f.Titulo == filmes.Titulo);
-                Console.WriteLine(filmeInserido.Classificacao.ParaString());
+                Console.WriteLine("Funcionarios");
+                foreach (var funcionario in contexto.Funcionarios)
+                {
+                    Console.WriteLine(funcionario);
+                }
 
                 Console.ReadKey();
 
             }
+        }
+
+        private static void InserindoListandoFilme(AluraFilmesContexto contexto)
+        {
+            var filmes = new Filme();
+            filmes.Titulo = "Cassino Royale";
+            filmes.Duracao = 120;
+            filmes.AnoLancamento = "2000";
+            filmes.Classificacao = ClassificacaoIndicativa.MaioresQue14;
+            filmes.IdiomaFalado = contexto.Idiomas.First();
+            contexto.Entry(filmes).Property("last_update").CurrentValue = DateTime.Now;
+
+            contexto.Filmes.Add(filmes);
+            contexto.SaveChanges();
+
+            var filmeInserido = contexto.Filmes.First(f => f.Titulo == filmes.Titulo);
+            Console.WriteLine(filmeInserido.Classificacao.ParaString());
         }
 
         private static void ConvertEnumParaTabelaEextensao()

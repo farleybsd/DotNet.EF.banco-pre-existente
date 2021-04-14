@@ -129,6 +129,7 @@
   <ItemGroup>
     <Compile Include="Dados\AluraFilmesContexto.cs" />
     <Compile Include="Dados\AtorConfiguration.cs" />
+    <Compile Include="Dados\ClienteConfiguration.cs" />
     <Compile Include="Dados\FilmeAtorConfiguration.cs" />
     <Compile Include="Dados\FilmeConfiguration.cs" />
     <Compile Include="Dados\IdiomaConfiguration.cs" />
@@ -168,9 +169,11 @@
     </Compile>
     <Compile Include="Migrations\AluraFilmesContextoModelSnapshot.cs" />
     <Compile Include="Negocio\Ator.cs" />
+    <Compile Include="Negocio\Cliente.cs" />
     <Compile Include="Negocio\Enum\ClassificacaoIndicativa.cs" />
     <Compile Include="Negocio\Filme.cs" />
     <Compile Include="Negocio\FilmeAtor.cs" />
+    <Compile Include="Negocio\Funcionario.cs" />
     <Compile Include="Negocio\Idioma.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
