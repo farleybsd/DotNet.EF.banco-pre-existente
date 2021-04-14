@@ -45,15 +45,7 @@ namespace Alura.Filmes.App
                 var sql = @"SELECT
                                     a.*
                             FROM actor a
-	                            inner join (
-                                            SELECT TOP 5
-                                                        A.actor_id,
-                                                        COUNT(*) AS TOTAL
-                                            FROM actor a
-	                                                    INNER JOIN film_actor FA ON FA.actor_id = a.actor_id
-                                            GROUP BY 
-                                            A.actor_id
-                                            ORDER BY TOTAL desc) filmes on filmes.actor_id = a.actor_id
+	                            inner join top5_most_starred_actors filmes on filmes.actor_id = a.actor_id
                             ";
 
                 var atoresMaisAtuantes = contexto

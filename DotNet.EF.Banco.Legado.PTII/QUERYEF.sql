@@ -24,3 +24,15 @@ FROM actor a
 GROUP BY 
 A.actor_id
 ORDER BY TOTAL desc) filmes on filmes.actor_id = a.actor_id
+
+
+---
+--- Structure for view top5_most_starred_actors
+---
+CREATE VIEW top5_most_starred_actors
+AS
+    select top 5 a.actor_id, a.first_name, a.last_name, count(fa.film_id) as total
+    from actor a
+        inner join film_actor fa on fa.actor_id = a.actor_id
+    group by a.actor_id, a.first_name, a.last_name
+    order by total desc
