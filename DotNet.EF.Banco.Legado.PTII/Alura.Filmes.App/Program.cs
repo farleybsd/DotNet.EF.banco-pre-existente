@@ -46,27 +46,63 @@ namespace Alura.Filmes.App
                 //SelectUsandoRawSql(contexto);
 
                 //ExeculteProcedureEF
+                //ExeculteProcedureEF(contexto);
 
-                var categ = "Action";
+                var sql = "INSERT INTO language (name) VALUES ('Teste 1'), ('Teste 2'), ('Teste 3')";
 
-                var paramCateg = new SqlParameter("category_name",categ);
-                var paramTotal = new SqlParameter
-                { 
-                    ParameterName = "@total_actors",
-                    Size=4,
-                    Direction = System.Data.ParameterDirection.Output
-                };
-                
+               var registros =  contexto
+                                   .Database
+                                   .ExecuteSqlCommand(sql);
 
-                contexto
-                    .Database
-                    .ExecuteSqlCommand("total_actors_from_given_category @category_name , @total_actors OUT", paramCateg,paramTotal);
+                Console.WriteLine($"O total de registros afetados e {registros}.");
 
-                Console.WriteLine($"O Total de atores na categoria {categ} é de {paramTotal.Value}.");
+                var deleteSql = "DELETE FROM language WHERE name LIKE 'Teste%'";
+                registros = contexto.Database.ExecuteSqlCommand(deleteSql);
+                System.Console.WriteLine($"O total de registros afetados é {registros}.");
 
                 Console.ReadKey();
 
             }
+        }
+
+        static void StoredProcedure(DbContext contexto)
+        {
+            var categ = "Action";
+
+            var paramCateg = new SqlParameter("category_name", categ);
+            var paramTotal = new SqlParameter
+            {
+                ParameterName = "@total_actors",
+                Size = 4,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+
+            contexto
+                .Database
+                .ExecuteSqlCommand("total_actors_from_given_category @category_name , @total_actors OUT", paramCateg, paramTotal);
+
+            Console.WriteLine($"O Total de atores na categoria {categ} é de {paramTotal.Value}.");
+        }
+
+        private static void ExeculteProcedureEF(AluraFilmesContexto contexto)
+        {
+            var categ = "Action";
+
+            var paramCateg = new SqlParameter("category_name", categ);
+            var paramTotal = new SqlParameter
+            {
+                ParameterName = "@total_actors",
+                Size = 4,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+
+            contexto
+                .Database
+                .ExecuteSqlCommand("total_actors_from_given_category @category_name , @total_actors OUT", paramCateg, paramTotal);
+
+            Console.WriteLine($"O Total de atores na categoria {categ} é de {paramTotal.Value}.");
         }
 
         private static void SelectUsandoRawSql(AluraFilmesContexto contexto)
